@@ -10,7 +10,7 @@ aliases:
   - /partners/lighthouse
   - /partner/pal
   - /partners/pal
-weight: 3
+weight: 60
 ---
 
 ## Introduction
