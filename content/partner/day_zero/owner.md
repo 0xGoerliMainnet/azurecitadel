@@ -155,7 +155,7 @@ Feel free to toggle off the Global Admin elevation.
 
 OK, you can now see the subscription and have full access with both Global Admin (AAD) and Owner (Azure RBAC).
 
-In the next page we'll create a resource group and resource and get to know about providers and resource IDs.
+In the next page we'll create an Azure Container Registry and get to know about providers and resource IDs.
 
 ## Resources
 
