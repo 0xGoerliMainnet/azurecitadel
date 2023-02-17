@@ -98,8 +98,6 @@ Ensure the following are registered:
 
    Repeat.
 
-On the next page you'll start using the Azure CLI.
-
 ## Documentation
 
 1. Search on "azure docs" in your browser, or <https://aka.ms/azure/docs>.
