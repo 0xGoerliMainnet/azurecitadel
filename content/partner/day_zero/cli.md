@@ -81,33 +81,20 @@ As an example, here are a few commands to push an image into the Azure Container
     az account show --output jsonc
     ```
 
-1. List out the resource groups
+1, Switch on parameter persistence
 
     ```bash
-    az group list --output table
+    az config param-persist on
     ```
 
-    You should see the `acr` resource group, plus the one that Cloud Shell has created.
-
-1. List the container registries in yamlc format
+1. Create a resource group
 
     ```bash
-    az acr list --resource-group acr --output yamlc
+    az group create --name aks --location westeurope
     ```
 
-1. Grab the resource ID
 
-    ```bash
-    acr=$(az acr list --resource-group acr --query [0].name --output tsv)
-    ```
 
-    Assumes only one ACR exists in that resource group.
-
-1. Log in to the registry
-
-    ```bash
-    az acr login --name $acr
-    ```
 
 
 
