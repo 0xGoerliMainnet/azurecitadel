@@ -23,6 +23,10 @@ name = "Fundamentals"
 url = "/fundamentals"
 
 [[frontpage]]
+name = "Infrastructure"
+url = "/infra"
+
+[[frontpage]]
 name = "Marketplace"
 url = "/marketplace"
 
@@ -41,7 +45,3 @@ url = "/setup"
 [[frontpage]]
 name = "Terraform"
 url = "/terraform"
-
-[[frontpage]]
-name = "Virtual Machines"
-url = "/vm"

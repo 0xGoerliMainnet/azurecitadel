@@ -5,10 +5,12 @@ layout: single
 draft: false
 menu:
   side:
-    parent: vm
-    identifier: vm-identity
+    parent: infra
+    identifier: infra-identity
 series:
- - vm-identity
+ - infra-identity
+aliases:
+ - /vm/identity
 ---
 
 ## Introduction

@@ -1,13 +1,13 @@
 ---
-title: "Virtual Machines"
-description: "Short labs to go deep in specific ."
+title: "Infrastructure"
+description: "A selection of Azure infrastructure related labs."
 author: [ "Richard Cheney" ]
 github: [ "richeney" ]
 menu:
   side:
-    identifier: vm
+    identifier: infra
 aliases:
-    - /vms
+    - /infrastructure
 ---
 
 ## Introduction

@@ -5,8 +5,10 @@ layout: single
 draft: false
 menu:
   side:
-    parent: vm
-    identifier: vm-bastion
+    parent: infra
+    identifier: infra-bastion
+aliases:
+ - /vm/bastion
 ---
 
 ## Introduction
