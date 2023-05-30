@@ -1,9 +1,9 @@
 ---
-title: "Storage Account"
+title: "Storage"
 date: 2023-03-14
 author: [ "Richard Cheney" ]
 description: "Create and protect a storage account with version level immutability."
-weight: 2
+weight: 1
 series:
  - immutable
 menu:
@@ -43,11 +43,11 @@ The blob uploads will take that default container level policy unless the upload
 
 Additional settings:
 
-✅ *Tighten network access* ✅
-✅ *Disable account key access* ✅
-✅ *Enable blob versioning* ✅
-✅ *Set [change feed](https://learn.microsoft.com/azure/storage/blobs/storage-blob-change-feed) to 7 days* ✅
-❌ *Point-in-time restore* (conflicts with Azure Blob backup)
+- *Tighten network access* ✅
+- *Disable account key access* ✅
+- *Enable blob versioning* ✅
+- *Set [change feed](https://learn.microsoft.com/azure/storage/blobs/storage-blob-change-feed) to 7 days* ✅
+- *Point-in-time restore* ❌ (conflicts with Azure Blob backup)
 
 ## Working directory
 
@@ -142,6 +142,8 @@ Additional settings:
         --allow-protected-append-writes true
     ```
 
+    Note that this storage account has an unlocked immutability policy that ensures no files will be deleted for two days.
+
 1. Configure network rules
 
     Allow your public IP.
@@ -178,59 +180,3 @@ Additional settings:
         --enable-restore-policy false
     ```
 
-## Container
-
-1. Get the storage account name again
-
-    ```bash
-    storage_account=$(az config get --local storage.legalhold --query value -otsv)
-    ```
-
-1. Create a container
-
-    Note that this uses the container-rm subcommand.
-
-    ```bash
-    az storage container-rm create \
-    --name legal-hold \
-    --storage-account $storage_account  \
-    --public-access off --enable-vlw
-    ```
-
-1. Check (optional)
-
-    ```bash
-    az storage container-rm show \
-        --storage-account $storage_account \
-        --name legal-hold \
-        --query '[immutableStorageWithVersioning.enabled]' \
-        --output tsv
-    ```
-
-1. What about one with a different default period?
-
-```bash
-az storage container immutability-policy create \
-    --account-name <storage-account> \
-    --container-name <container> \
-    --period <retention-interval-in-days> \
-    --allow-protected-append-writes true
-```
-
-1. Add a legal hold to the container- DON'T DO THIS!!!
-
-    Legal hold can be applied at a container level, or on individual blob versions. As this is a target for storing legal hold info then suggest container level.
-
-    ```bash
-    az storage container legal-hold set \
-      --account-name $storage_account \
-      --container-name legal-hold \
-      --tags tag1 tag2 \
-      --allow-protected-append-writes-all true
-    ```
-
-    Note that the tags are required.
-
-## Add Blob Contributor
-
-This could be a process using managed identity for the uploads or reads, but for this lab we assign a role for ourselves.
